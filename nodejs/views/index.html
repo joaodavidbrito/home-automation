@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="/public/assets/vendors/bootstrap/js/bootstrap.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="/public/assets/vendors/bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+    <form id="form" action="/csv" method="post">
+        <div class="container">
+            <h1 style="text-align: center">InfluxDB - JSON to CSV</h1>
+            <div class="row mt-3">
+                <div class="col-sm-2">
+                    Database
+                </div>
+                <div class="col-sm-10">
+                    <input type="text" value="mydb" name="db" placeholder="Enter database name">
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-sm-2">
+                    Time Format
+                </div>
+                <div class="col-sm-10">
+                    <input type="text" value="ms" name="epoch" placeholder="Enter time format">
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-sm-2">
+                    Timestamp 1
+                </div>
+                <div class="col-sm-10">
+                    <input id="t1" type="text" name="time1" placeholder="Enter time1">
+                    <input id="check_t1" name="check_t1" type="checkbox">
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-sm-2">
+                    Timestamp 2
+                </div>
+                <div class="col-sm-10">
+                    <input id="t2" type="text" name="time2" placeholder="Enter time2">
+                    <input id="check_t2" name="check_t2" type="checkbox">
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-sm-2">
+                    Order By
+                </div>
+                <div class="col-sm-4">
+                    <input id="order" type="text" value="time" name="order_by" placeholder="Enter order by">
+                    <input id="check_order" name="check_order" type="checkbox">
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-sm-2">
+                    Limit
+                </div>
+                <div class="col-sm-10">
+                    <input id="limit" type="text" name="limit" placeholder="Enter limit">
+                    <input id="check_limit" name="check_limit" type="checkbox">
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-sm-2">
+                </div>
+                <div class="col-sm-2">
+                    <button type="button" id="clear" class="btn btn-secondary float-sm-left btn-danger">Clear</button>
+                    <button type="submit" class="btn btn-secondary float-sm-right ml-2 btn-success">Submit</button>
+                    <button type="button" class="btn btn-secondary float-sm-right ml-2 btn-dark form-control mt-3" id="charts">Charts <ion-icon name="arrow-round-forward"></ion-icon></button>
+                </div>
+            </div>
+        </div>
+        </div>
+    </form>
+</body>
+<script>
+    const form = document.querySelector('#form')
+
+    form.addEventListener('submit', (e) => {
+        // e.preventDefault();
+        // const req = new XMLHttpRequest();
+        // req.addEventListener('readystatechange', (e)=> {
+        //     if(e.target.readyState === 4){
+        //         console.log(e);
+        //     }else{
+        //         console.log('error');
+        //     }
+        // });
+
+        // // const formData = new FormData(form);
+        // // console.log(JSON.stringify(formData, undefined, 2));
+
+        // req.open('POST', '/axios');
+        // req.setRequestHeader('Content-Type', 'application/json');
+        // req.send(JSON.stringify({
+        //     db: 'mydb',
+        //     epoch: 'ms'
+        // }, undefined, 2))
+
+        localStorage.setItem('db', document.querySelector('input[name="db"]').value)
+        localStorage.setItem('epoch', document.querySelector('input[name="epoch"]').value)
+        localStorage.setItem('time1', document.querySelector('input[name="time1"').value)
+        localStorage.setItem('time2', document.querySelector('input[name="time2"').value)
+        localStorage.setItem('orderby', document.querySelector('input[name="order_by"').value)
+        localStorage.setItem('limit', document.querySelector('input[name="limit"').value)
+    })
+
+    document.querySelector('#check_t1').addEventListener('click', (e) => {
+        if(!e.target.checked){
+            document.querySelector('#t1').value = ''
+        }else{
+            document.querySelector('#t1').value = new Date().getTime()
+        }
+        
+    })
+
+    document.querySelector('#t1').addEventListener('input', (e) => {
+        document.querySelector('#check_t1').checked = true
+        if(e.target.value === ''){
+            document.querySelector('#check_t1').checked = false
+        }
+        
+    })
+
+    document.querySelector('#t2').addEventListener('input', (e) => {
+        document.querySelector('#check_t2').checked = true
+        if(e.target.value === ''){
+            document.querySelector('#check_t2').checked = false
+        }
+        
+    })
+
+    document.querySelector('#check_t2').addEventListener('click', (e) => {
+        if(!e.target.checked){
+            document.querySelector('#t2').value = ''
+        }else{
+            document.querySelector('#t2').value = new Date().getTime()
+        }
+        
+    })
+
+    document.querySelector('#check_order').addEventListener('click', (e) => {
+        if(!e.target.checked){
+            document.querySelector('#order').value = ''
+        }else{
+            document.querySelector('#order').value = 'time'
+        }
+        
+    })
+
+    document.querySelector('#order').addEventListener('input', (e) => {
+        document.querySelector('#check_order').checked = true
+        if(e.target.value === ''){
+            document.querySelector('#check_order').checked = false
+        }
+    })
+
+    document.querySelector('#check_limit').addEventListener('click', (e) => {
+        if(!e.target.checked){
+            document.querySelector('#limit').value = ''
+        }
+        
+    })
+
+    document.querySelector('#limit').addEventListener('input', (e) => {
+        document.querySelector('#check_limit').checked = true
+        if(e.target.value === ''){
+            document.querySelector('#check_limit').checked = false
+        }
+        
+    })
+
+    if(localStorage.getItem('db')){
+            document.querySelector('input[name="db"]').value = localStorage.getItem('db')
+    }
+
+    if(localStorage.getItem('epoch')){
+        document.querySelector('input[name="epoch"]').value = localStorage.getItem('epoch')
+    }
+
+    document.querySelector('input[name="time1"').value = localStorage.getItem('time1')
+    document.querySelector('input[name="time2"').value = localStorage.getItem('time2')
+    document.querySelector('input[name="order_by"').value = localStorage.getItem('orderby')
+    document.querySelector('input[name="limit"').value = localStorage.getItem('limit')
+
+    document.querySelector('#clear').addEventListener('click', (e) => {
+        if (confirm('Are you sure you want to clear the form?')) {
+            localStorage.clear();
+            location.reload();
+        }
+    })
+
+    document.querySelector('#charts').addEventListener('click', (e) => {
+            window.location = 'http://localhost:3000/charts'
+        });
+
+
+</script>
+
+</html>

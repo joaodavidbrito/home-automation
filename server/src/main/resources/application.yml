@@ -1,0 +1,16 @@
+server:
+    port: 8080
+mongodb:
+    url: mongodb://${mongodb.username}:${mongodb.password}@ds159459.mlab.com:${mongodb.port}/${mongodb.database}
+    port: 59459
+    username: iot
+    password: iot
+    database: iot
+time:
+    ntpServerHost: ntp1.dsl.vodafone.pt
+logging:
+    level: 
+        org.springframework.web: info
+        pt.joaobrito.ha.homeautomation.service.*: info
+        pt.joaobrito.ha.homeautomation.controller.*: info
+        pt.joaobrito.ha.homeautomation.opencv.*: warn

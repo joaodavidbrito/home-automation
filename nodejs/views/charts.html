@@ -1,0 +1,272 @@
+<html>
+
+<head>
+    <title>Home Automation Charts</title>
+    <link rel="stylesheet" href="/public/assets/vendors/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/assets/css/styles.css">
+    <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+    <div class="container ml-5">
+        <form class="needs-validation" novalidate>
+            <div class="row mt-3">
+                <div class="col-sm-12 text-center mb-3">
+                    <h1>Home Automation Charts</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2 font-weight-bold">
+                    Chart Title / Subtitle
+                </div>
+                <div class="col-sm-3">
+                    <input class="form-control" type="text" name="chartTitle" placeholder="Provide the title here">
+                </div>
+                <div class="col-sm-3">
+                    <input class="form-control" type="text" id="subtitle" placeholder="Provide the subtitlee here">
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="trendline">
+                        <label class="form-check-label" for="trendline">Include trendline?</label>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="nf" name="nf">
+                        <label class="form-check-label" for="nf">Incl. Not Founds?</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-sm-2 font-weight-bold">
+                    Chart Events
+                </div>
+                <div class="col-sm-5">
+                    <select class="custom-select" name="chart" required>
+                        <option value="">Select a chart</option>
+                        <option value="Astart_Asend">Android Start - Android Send</option>
+                        <option value="Asend_Sstart">Android Send - Server Start</option>
+                        <option value="Aresend_Srestart">Android Resend - Server Restart</option>
+                        <option value="Sstart_Sendmatch">Server Start - Server End Matching</option>
+                        <option value="Srestart_Srendmatch">Server Restart - Server Reend Matching</option>
+                        <option value="Snotfound_UNAorLR">Server Not Found - User Not Aborted | Limit Reached
+                        </option>
+                        <option value="Snotfound_Aend">Server Not Found - Android End</option>
+                        <option value="Aend_FDorPD">Android End - False Detection | Positive Detection</option>
+                        <option value="PD_MQTT">Positive Detection - MQTT</option>
+                        <option value="MQTT_RESP">MQTT - OpenHAB Response</option>
+                        <option value="Astart_Aend">Android Start - Android End</option>
+                        <option value="Sstart_Send">Server Start - Server End</option>
+                        <option value="Astart_UAorLR">Android Start - User Aborted | Limit Reached</option>
+                        <option value="Sstart_UAorLR">Server Start - User Aborted | Limit Reached</option>
+                        <option value="Astart_RESP">Android Start - First Device Response</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Please select a chart
+                    </div>
+                </div>
+                <div class="col-sm-1 align-content-center">
+                    <button type="button" class="btn btn-outline-info" id="flow">Flow</button>
+                </div>
+                <div class="col-sm-4">
+                    <div class="input-group">
+                        <select class="custom-select" id="suit" name="suit">
+                            <option value="">Select Suit / Object</option>
+                            <optgroup label="CARDS">
+                                <option value="7ouros">7 Ouros</option>
+                                <option value="7ouros cima">7 Ouros - cima</option>
+                                <option value="7ouros dto">7 Ouros - direito</option>
+                                <option value="7ouros esq">7 Ouros - esquerda</option>
+                                <option value="7ouros deitada">7 Ouros - deitada</option>
+                                <option value="8paus">8 espadas</option>
+                                <option value="8paus cima">8 espadas - cima</option>
+                                <option value="8paus dto">8 espadas - direito</option>
+                                <option value="8paus esq">8 espadas - esquerda</option>
+                                <option value="8paus deitada">8 espadas - deitada</option>
+                                <option value="9paus">9 paus</option>
+                                <option value="9paus cima">9 paus - cima</option>
+                                <option value="9paus dto">9 paus - direito</option>
+                                <option value="9paus esq">9 paus - esquerda</option>
+                                <option value="9paus deitada">9 paus - deitada</option>
+                                <option value="joker">Joker</option>
+                                <option value="joker cima">Joker - cima</option>
+                                <option value="joker dto">Joker - direito</option>
+                                <option value="joker esq">Joker - esquerda</option>
+                                <option value="joker deitado">Joker - deitado</option>
+                                <option value="valete">Valete Ouros</option>
+                                <option value="valete cima">Valete Ouros - cima</option>
+                                <option value="valete dto">Valete Ouros - direito</option>
+                                <option value="valete esq">Valete Ouros - esquerda</option>
+                                <option value="valete deitado">Valete Ouros - deitado</option>
+                            </optgroup>
+                            <optgroup label="OBJECTS 3D">
+                                <option value="hue lamp">HUE Lamp</option>
+                                <option value="hue lamp cima">HUE Lamp - cima</option>
+                                <option value="hue lamp dto">HUE Lamp - direito</option>
+                                <option value="hue lamp esq">HUE Lamp - esquerda</option>
+                                <option value="knx lamp">KNX Lamp</option>
+                                <option value="knx lamp cima">KNX Lamp - cima</option>
+                                <option value="knx lamp dto">KNX Lamp - direito</option>
+                                <option value="knx lamp esq">KNX Lamp - esquerda</option>
+                                <option value="tomada">Tomada</option>
+                                <option value="tomada cima">Tomada - cima</option>
+                                <option value="tomada dto">Tomada - direito</option>
+                                <option value="tomada esq">Tomada - esquerda</option>
+                                <option value="ventoinha">Ventoinha</option>
+                                <option value="ventoinha cima">Ventoinha - cima</option>
+                                <option value="ventoinha dto">Ventoinha - direito</option>
+                                <option value="ventoinha esq">Ventoinha - esquerda</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row mt-3">
+                <div class="col-sm-2 font-weight-bold">
+                    First Timestamp
+                </div>
+                <div class="col-sm-6">
+                    <input class="form-control" type="datetime-local" step="0.001" name="time1" required>
+                </div>
+                <div class="col-sm-4">
+                    <input class="form-control" type="text" id="timestamp1">
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-sm-2 font-weight-bold">
+                    Last Timestamp
+                </div>
+                <div class="col-sm-6">
+                    <input class="form-control" type="datetime-local" step="0.001" name="time2" required>
+                    <div class="invalid-feedback">
+                        Please provide a valid timestamp
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <input class="form-control" type="text" id="timestamp2">
+                </div>
+
+            </div>
+            <div class="row mt-3">
+                <div class="col-sm-2 font-weight-bold">
+                    Horizontal Axis Title
+                </div>
+                <div class="col-sm-6">
+                    <input class="form-control" type="text" name="hAxisTitle">
+                </div>
+                <div class="col-sm-2">
+                    <input class="form-control" type="text" name="hAxisMin" placeholder="min value">
+                </div>
+                <div class="col-sm-2">
+                    <input class="form-control" type="text" name="hAxisMax" placeholder="max value">
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-sm-2 font-weight-bold">
+                    Vertical Axis Title
+                </div>
+                <div class="col-sm-6">
+                    <input class="form-control" type="text" name="vAxisTitle">
+                </div>
+                <div class="col-sm-2">
+                    <input class="form-control" type="text" name="vAxisMin" placeholder="min value">
+                </div>
+                <div class="col-sm-2">
+                    <input class="form-control" type="text" name="vAxisMax" placeholder="max value">
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-sm-12">
+                    <button type="button" class="btn btn-outline-secondary float-left btn-outline-dark" id="back"><ion-icon name="arrow-round-back"></ion-icon> Go
+                        Back</button>
+                    <button type="button" class="btn float-left ml-2 btn-outline-secondary btn-outline-danger"
+                        type="button" id="cancel">Reset</button>
+                    <button type="submit" class="btn float-left ml-2 btn-success">Submit</button>
+
+                </div>
+            </div>
+        </form>
+        <div class="mt-0">
+            <div id="chart_div" style="height: 600px;"></div>
+            <section id="summary">
+                <h4>Quadro Resumo</h4>
+                <div id="cart_table-dark">
+                    <table class="table table-bordered table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Total</th>
+                                <th scope="col">Mín</th>
+                                <th scope="col">Q1</th>
+                                <th scope="col">Mediana</th>
+                                <th scope="col">Q3</th>
+                                <th scope="col">Máx</th>
+                                <th scope="col">Média</th>
+                                <th scope="col">Desv. Padrão</th>
+                                <th scope="col">Outliers</th>
+                                <th scope="col">% Outliers</th>
+                                <th scope="col">L. Inf.</th>
+                                <th scope="col">L. Sup</th>
+                                <th scope="col" id="nfh"># NF</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td id="total">Mark</td>
+                                <td id="min">Mark</td>
+                                <td id="q1">Mark</td>
+                                <td id="q2">Mark</td>
+                                <td id="q3">Mark</td>
+                                <td id="max">Mark</td>
+                                <td id="mean">Mark</td>
+                                <td id="stddev">Mark</td>
+                                <td id="outliers">Mark</td>
+                                <td id="perc">Mark</td>
+                                <td id="inf">Mark</td>
+                                <td id="sup">Mark</td>
+                                <td id="notfounds" class="table-warning">Mark</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <div id="piechart_3d" style="height: 600px;"></div>
+            <div id="chart_div_histo" class="mb-5" style="height: 600px;"></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 align-content-center mx-auto">
+            <img id="myImg" src="/public/assets/img/Fluxo-FLUX BY TYPE.png" alt="Flow by Type"
+                style="width:100%;max-width:50px;display: none">
+    
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+                <span class="close">&times;</span>
+                <img class="modal-content" id="img01">
+                <div id="caption"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container ml-5">
+            <div class="mx-auto">
+                <div class="row no-gutters">
+                    <div class="col-sm-12">
+                        <p style="font: normal normal normal 11px/1.3em Play,sans-serif !important; color: gray !important;"
+                            class="font_8">​​​​Copyright 2019 &copy; João David Brito. Todos os direitos reservados</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/public/assets/vendors/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="/public/assets/vendors/moment/moment.js"></script>
+    <script src="/public/assets/scripts/js/charts_script.js"></script>
+</body>
+</html>

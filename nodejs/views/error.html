@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="/public/assets/vendors/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/public/assets/vendors/bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container text-center">
+        <h1>{{error}}</h1>
+        <h2>:(</h2>
+        <form action="/back" method="GET">
+            <button class="mt-3" id="back">Go Back</button>
+            <br><br>
+        </form>
+    </div>
+
+    <script>
+            const txt = document.querySelector('#csv');
+            if(txt){
+                txt.addEventListener('click', (e) => {
+                    txt.select();
+                    document.execCommand('copy');
+                });
+            }
+            const button = document.querySelector('button')
+            if(button){
+                button.addEventListener('click', (e)=> {
+                    document.forms[0].submit();
+                });
+            }
+        </script>
+</body>
+</html>

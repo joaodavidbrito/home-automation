@@ -1,0 +1,41 @@
+<resources>
+
+    <!-- openCV -->
+    <string name="opencv_server_host">192.168.0.111:8080</string>
+
+    <!-- Mosquito -->
+    <string name="mosquito_server_url">192.168.0.113:1883</string>
+    <string name="mosquito_username">openhabian</string>
+    <string name="mosquito_password">openhabian</string>
+
+    <!-- influxDB -->
+    <string name="influxdb_url">10.20.0.3:8086</string>
+    <string name="influxdb_database">mydb</string>
+
+    <!-- NTP -->
+    <string name="ntp_server_host">ntp1.dsl.vodafone.pt</string>
+
+    <string name="app_name">HA with Mobile Devices</string>
+    <string name="save_image">Save Image</string>
+    <string name="find_thing">Find Thing</string>
+    <string name="meta_data">Image Meta data</string>
+    <string name="action_settings">Settings</string>
+    <string name="thing_name">Topic name (e.g tabua/lamp)</string>
+    <string name="scan">SCAN</string>
+    <string name="back">BACK</string>
+    <string name="sensor_type">Sensor Type</string>
+    <string name="save">save</string>
+    <string name="cancel">cancel</string>
+    <string name="reset">reset</string>
+    <string name="clear">clear</string>
+    <string name="action_settings_reset">Reset Settings</string>
+    <string name="action_settings_clear">Clear Settings</string>
+    <string name="preload">Load</string>
+    <string name="thing_desc">Description</string>
+    <string name="reload_app">Reload App</string>
+
+    <string-array name="sensors">
+        <item>PROXIMITY</item>
+        <item>ROTATION</item>
+    </string-array>
+</resources>

@@ -1,0 +1,26 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="ha.joaobrito.pt.ha.MainActivity">
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_settings_clear"
+        android:orderInCategory="200"
+        android:title="@string/action_settings_clear"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_settings_reset"
+        android:orderInCategory="300"
+        android:title="@string/action_settings_reset"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_settings_reload"
+        android:orderInCategory="400"
+        android:title="@string/reload_app"
+        app:showAsAction="never" />
+
+</menu>

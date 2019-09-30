@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="/public/assets/vendors/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/public/assets/vendors/bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <section>
+            <h1 >Fetched {{count}} results in {{time}} ms!</h1>
+            <p class="mb-1"><span style="font-weight: bold">Executed queries</span></p>
+            <div>
+                {{#each this.queries as |query|}}
+                <p class="text-light bg-secondary mt-0 pl-1 mb-1">{{query}}</p>
+                {{/each}}
+            </div>
+            <h5 class="mt-3 alert-success">Click the text below to copy it to the clipboard</h5>
+        </section>
+        <textarea style="width: 100%; resize: none;" name="results" id="csv" rows="10">{{{csv}}}</textarea>
+        <br><br>
+        <form action="/back" method="GET">
+            <button class="btn btn-secondary float-sm-left" id="back2">« Go Back</button>
+        </form>
+    </div>
+
+    <script>
+        const txt = document.querySelector('#csv');
+        txt.addEventListener('click', (e) => {
+            txt.select();
+            document.execCommand('copy');
+        });
+
+        document.querySelector('button').addEventListener('click', (e) => {
+            document.forms[0].submit();
+        });
+
+        
+
+    </script>
+</body>
+
+</html>

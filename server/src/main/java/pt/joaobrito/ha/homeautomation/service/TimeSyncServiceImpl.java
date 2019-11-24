@@ -48,6 +48,7 @@ public class TimeSyncServiceImpl implements TimeSyncService {
         } catch (SocketException e) {
             LOG.error(e.getMessage(), e);
         }
+        LOG.info("Offset time is: {}", offsetTime);
         return offsetTime;
     }
 }

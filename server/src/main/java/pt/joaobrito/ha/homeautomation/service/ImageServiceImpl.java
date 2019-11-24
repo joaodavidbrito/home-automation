@@ -115,7 +115,7 @@ public class ImageServiceImpl implements ImageService {
             imageStream = this.getObjectImagesFromFuture().stream();
 
         }
-        imageStream.filter(o -> {
+        match = imageStream.filter(o -> {
             SurfResult res;
             try {
                 res = surfDetector.find(o.getEncodedImage(), scene, o.getDescriptor(), o.getKeyPoints(), scnDescriptor);

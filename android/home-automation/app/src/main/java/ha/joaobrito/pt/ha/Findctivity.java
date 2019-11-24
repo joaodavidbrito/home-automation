@@ -262,9 +262,6 @@ public class Findctivity extends Activity implements SensorEventListener {
 
             // http params
             HttpParams params = new BasicHttpParams();
-            HttpConnectionParams.setConnectionTimeout(params, 4000);
-            HttpConnectionParams.setSoTimeout(params, 500);
-            HttpConnectionParams.setTcpNoDelay(params, true);
             this.httpclient = new DefaultHttpClient(params);
 
             HttpResponse response = null;
@@ -321,7 +318,9 @@ public class Findctivity extends Activity implements SensorEventListener {
                 Log.e(TAG, e.getMessage());
             } finally {
                 try {
-                    ois.close();
+                    if(ois != null) {
+                        ois.close();
+                    }
                 } catch (IOException e) {
                     Log.e(TAG, e.getMessage(), e);
                 }

@@ -7,7 +7,7 @@ mongodb:
     password: iot
     database: iot
 time:
-    ntpServerHost: ntp1.dsl.vodafone.pt
+    ntpServerHost: time.google.com
 logging:
     level: 
         org.springframework.web: info

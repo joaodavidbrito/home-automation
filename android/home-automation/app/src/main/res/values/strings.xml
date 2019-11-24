@@ -13,7 +13,7 @@
     <string name="influxdb_database">mydb</string>
 
     <!-- NTP -->
-    <string name="ntp_server_host">ntp1.dsl.vodafone.pt</string>
+    <string name="ntp_server_host">time.google.com</string>
 
     <string name="app_name">HA with Mobile Devices</string>
     <string name="save_image">Save Image</string>
